@@ -1,0 +1,19 @@
+[Unit]
+Description=PhotoWall Java API
+After=network.target
+
+[Service]
+User=photowall
+Group=photowall
+WorkingDirectory=/opt/photowall
+EnvironmentFile=/etc/photowall.env
+ExecStart=/usr/bin/java -Xms128m -Xmx768m -jar /opt/photowall/server/photowall-server.jar
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/photowall/data
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

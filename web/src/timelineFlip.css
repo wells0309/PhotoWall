@@ -1,0 +1,41 @@
+.timeline-view .timeline-collage-book{
+  --book-flip-paper:#fcfbf7;
+  display:block;
+  padding:0;
+  perspective:1800px;
+  transform:none;
+  transform-origin:center;
+}
+.timeline-view .timeline-collage-book:is(.turn-older,.turn-newer){animation:none;pointer-events:none}
+.timeline-collage-book .book-spread{
+  position:absolute;
+  inset:0;
+  display:grid;
+  grid-template-rows:34px repeat(3,minmax(0,1fr));
+  gap:8px;
+  padding:8px 20px 12px;
+  min-width:0;
+  min-height:0;
+}
+.book-spread>.collage-month,.book-spread>.timeline-spine,.book-spread>.year-marker{z-index:1}
+.book-next-spread{position:absolute;inset:0;z-index:1}
+.book-half-window{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;pointer-events:none;background:var(--book-flip-paper)}
+.book-half-window[data-half="left"]{left:0}
+.book-half-window[data-half="right"]{right:0}
+.book-half-canvas{position:absolute;top:0;bottom:0;width:200%}
+.book-half-window[data-half="left"] .book-half-canvas{left:0}
+.book-half-window[data-half="right"] .book-half-canvas{left:-100%}
+.book-still-half{z-index:2}
+.book-turn-sheet{position:absolute;top:0;bottom:0;width:50%;z-index:3;transform-style:preserve-3d;animation-duration:.86s;animation-timing-function:cubic-bezier(.42,.05,.58,.95);animation-fill-mode:both}
+.book-turn-sheet[data-direction="newer"]{left:50%;transform-origin:left center;animation-name:bookTurnForward}
+.book-turn-sheet[data-direction="older"]{right:50%;transform-origin:right center;animation-name:bookTurnBackward}
+.book-turn-face{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;background:var(--book-flip-paper);box-shadow:0 2px 18px #39442b20}
+.book-turn-back{transform:rotateY(180deg)}
+.book-turn-face .book-face-half{inset:0;width:100%;background:transparent}
+.book-turn-front::after,.book-turn-back::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#46503923,transparent 28%,#fff8e916);opacity:.7}
+.book-turn-sheet[data-direction="older"] .book-turn-front::after,.book-turn-sheet[data-direction="older"] .book-turn-back::after{background:linear-gradient(270deg,#46503923,transparent 28%,#fff8e916)}
+@keyframes bookTurnForward{from{transform:rotateY(0)}to{transform:rotateY(-180deg)}}
+@keyframes bookTurnBackward{from{transform:rotateY(0)}to{transform:rotateY(180deg)}}
+@media(max-width:760px){.timeline-collage-book .book-spread{padding:7px 8px;gap:6px}}
+@media(max-height:600px){.timeline-collage-book .book-spread{grid-template-rows:25px repeat(3,minmax(0,1fr));padding:4px 8px;gap:3px}}
+@media(prefers-reduced-motion:reduce){.book-still-half,.book-turn-sheet{animation:none}}

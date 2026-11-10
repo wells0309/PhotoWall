@@ -1,0 +1,11 @@
+.admin-photo-item{min-width:0}
+.admin-photo-row.is-editing{border-color:var(--focus);background:var(--surface-soft)}
+.admin-panel .photo-inline-editor{margin:8px 0 4px;padding:20px;border:1px solid var(--line);border-radius:8px;background:var(--surface-soft);animation:photo-editor-reveal .18s ease-out}
+.admin-panel .photo-inline-editor>h3{margin:0 0 18px;font-size:17px;overflow-wrap:anywhere}
+.photo-time-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 22px;min-width:0}
+.photo-time-fields>label{min-width:0}
+.photo-time-fields input{width:100%;min-width:0;max-width:100%}
+.photo-time-fields .field-hint{line-height:1.7}
+@keyframes photo-editor-reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.admin-panel .photo-inline-editor{padding:14px}.photo-time-fields{gap:12px}.photo-time-fields input{padding-left:8px;padding-right:8px}}
+@media(prefers-reduced-motion:reduce){.admin-panel .photo-inline-editor{animation:none}}

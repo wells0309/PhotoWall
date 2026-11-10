@@ -1,0 +1,32 @@
+.journal-flip-holder{position:absolute;inset:0;min-width:0;min-height:0;touch-action:pan-y;user-select:none}
+.journal-flip-engine{width:100%;height:100%}
+.journal-flip-page{overflow:hidden;background:var(--book-flip-paper);box-shadow:0 0 2px #55442d30}
+.journal-flip-page>.journal-page{width:100%;height:100%;box-sizing:border-box}
+.journal-flip-page .mosaic-photo img{-webkit-user-drag:none;pointer-events:none}
+.journal-book-stage{position:relative;min-width:0;min-height:0;isolation:isolate}
+.journal-book-stage::before,.journal-book-stage::after{content:"";position:absolute;pointer-events:none}
+.journal-book-stage::before{inset:0;border:1px solid #84694c;border-radius:17px 19px 21px 17px;background:radial-gradient(ellipse at 50% 0,#e3ca9a54,transparent 60%),linear-gradient(120deg,#b39570 0%,#a48260 4%,#88694d 53%,#ab8964 96%,#76583f);box-shadow:inset 0 2px 0 #f4dcad8c,inset 3px 0 2px #ead1a57a,inset -4px -5px 7px #5f422c59,0 8px 9px #584a3533,0 20px 30px #5446334d,0 30px 52px #54463330;z-index:0}
+.journal-book-stage::after{inset:5px 12px 19px;border:1px solid #d8c5a2;border-radius:10px 12px 12px 9px;background:repeating-linear-gradient(0deg,#eee0c5 0 2px,#cbb895 2px 3px,#faf0db 3px 5px);box-shadow:0 1px 0 #fffaf0,0 3px 0 #d1bd99,0 5px 0 #f6ead4,0 8px 0 #a9926d,inset 0 0 0 2px #fff9ea;z-index:1}
+.timeline-view .timeline-collage-book.journal-book.journal-interactive-book{position:absolute;inset:11px 22px 31px;z-index:2;width:auto;height:auto;border:0;border-radius:3px 7px 7px 3px;background:#f5ecd9;box-shadow:inset 4px 0 7px #8d714963,inset -4px 0 7px #8d71494a,0 1px 2px #5b49324d;overflow:visible;perspective:none}
+.journal-interactive-book .stf__wrapper{height:100%!important;padding-bottom:0!important;overflow:visible}
+/* The stage must not crop a turning leaf. Each individual page still clips its content. */
+.journal-interactive-book .stf__block{overflow:visible}
+.timeline-view:has(.journal-interactive-book){overflow:visible}
+.timeline-view .journal-interactive-book[aria-busy="true"]{z-index:5}
+/* The spine shares StPageFlip's stacking context: resting leaves are z=1,
+   the spine is z=2, and a turning leaf rises to z=3/5 over the stitches. */
+.journal-interactive-book .stf__block::before,.journal-interactive-book .stf__block::after{content:"";position:absolute;left:50%;transform:translateX(-50%);pointer-events:none;z-index:2}
+.journal-interactive-book .stf__block::after{top:0;bottom:0;width:54px;background:linear-gradient(90deg,transparent 0%,#76604412 27%,#66523938 45%,#51412f4a 50%,#f6e6c76b 55%,#fff5de38 68%,transparent 100%)}
+.journal-interactive-book .stf__block::before{top:7%;bottom:7%;width:18px;background:url('/textures/book-stitch.svg') center top/18px 36px repeat-y;filter:drop-shadow(1px 1px 1px #fff4dc9c);opacity:.72}
+.journal-interactive-book[data-single="true"] .stf__block::before,.journal-interactive-book[data-single="true"] .stf__block::after{display:none}
+.journal-interactive-book .journal-page:after{width:25px;opacity:.5}
+.journal-interactive-book .stf__item{will-change:transform}
+.journal-flip-page .journal-page .book-snow{contain:strict}
+:root[data-theme="dark"] .journal-book-stage::before{border-color:#443729;background:linear-gradient(120deg,#665443,#4c3e32 5%,#3c322b 55%,#5b4939 96%,#332c27);box-shadow:inset 0 2px 0 #a18a6a75,inset -3px -4px 6px #1c1817a3,0 10px 12px #0008,0 23px 40px #0009}
+:root[data-theme="dark"] .journal-book-stage::after{border-color:#605240;background:repeating-linear-gradient(0deg,#625846 0 2px,#302e29 2px 3px,#83765f 3px 5px);box-shadow:0 1px 0 #a29677,0 3px 0 #332e29,0 5px 0 #80735c,0 8px 0 #292621,inset 0 0 0 2px #786c55}
+:root[data-theme="dark"] .timeline-view .timeline-collage-book.journal-book.journal-interactive-book{background:#28261f;box-shadow:inset 4px 0 7px #0008,inset -4px 0 7px #0007,0 1px 2px #0009}
+:root[data-theme="dark"] .journal-interactive-book .stf__block::after{background:linear-gradient(90deg,transparent,#0006 44%,#0009 50%,#c0aa8042 57%,transparent)}
+:root[data-theme="dark"] .journal-interactive-book .stf__block::before{filter:brightness(1.5) drop-shadow(0 1px 1px #0009)}
+@media(max-width:760px){.timeline-view .timeline-collage-book.journal-book.journal-interactive-book{inset:7px 11px 16px}.journal-book-stage::after{inset:4px 6px 8px}}
+@media(max-height:600px){.timeline-view .timeline-collage-book.journal-book.journal-interactive-book{inset:5px 10px 12px}.journal-book-stage::after{inset:3px 5px 6px}}
+@media(prefers-reduced-motion:reduce){.journal-interactive-book .stf__outerShadow,.journal-interactive-book .stf__innerShadow{display:none}}

@@ -1,0 +1,13 @@
+City locations derived from GeoNames cities15000, downloaded 2026-11-03.
+https://download.geonames.org/export/dump/cities15000.zip
+GeoNames: https://www.geonames.org/
+Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Nearest populated place within 50 km is an approximation, not an administrative boundary lookup.
+
+China administrative place-name search index (province/city/district reference points):
+Source: https://download.geonames.org/export/dump/CN.zip , downloaded 2026-11-09.
+Generated with server/tools/prepare_regions.py from ADM1, ADM2 and ADM3 records.
+GeoNames coordinates use WGS84. These are representative region coordinates,
+not exact camera GPS or a point-in-polygon administrative boundary determination.
+Administrative names and reference points may lag local administrative changes.
+Same CC BY 4.0 attribution and license apply to china-regions.tsv.

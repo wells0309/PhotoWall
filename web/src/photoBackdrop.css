@@ -1,0 +1,17 @@
+.app-shell:has(>.photo-backdrop){position:relative;isolation:isolate;background:#f7f3ea}
+.photo-backdrop{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 47% 10%,#fffdf8e8,transparent 62%),radial-gradient(ellipse at 0 86%,#e7d8b933,transparent 58%),linear-gradient(125deg,#f5f0e5,#faf7f0 52%,#eeeee3)}
+.photo-ambient{position:absolute;display:block;width:min(90vw,1100px);height:min(90vh,780px);pointer-events:none;mask-image:radial-gradient(ellipse,#000 0%,#0009 28%,transparent 70%);transition:background-color 1.2s ease;opacity:.22}
+.photo-ambient-warm{top:8%;right:-25%;transform:rotate(-18deg)}
+.photo-ambient-cool{left:-26%;bottom:-12%;opacity:.17}
+.photo-paper-grain{position:absolute;inset:0;background:url('/textures/paper-grain.svg') repeat;opacity:.16;mix-blend-mode:multiply;pointer-events:none}
+.photo-backdrop::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,#786c4405 0,#786c4405 1px,transparent 1px,transparent 5px);opacity:.45}
+.app-shell:has(>.photo-backdrop) .site-footer{border-top-color:#bfb7a133}
+:root[data-theme="dark"] .app-shell:has(>.photo-backdrop){background:#151c19}
+:root[data-theme="dark"] .photo-backdrop{background:radial-gradient(ellipse at 46% 3%,#2b3328a6,transparent 61%),radial-gradient(ellipse at 0 95%,#30352740,transparent 60%),linear-gradient(125deg,#141d1a,#19211c 54%,#131b19)}
+:root[data-theme="dark"] .photo-ambient{opacity:.13}
+:root[data-theme="dark"] .photo-ambient-cool{opacity:.1}
+:root[data-theme="dark"] .photo-paper-grain{mix-blend-mode:soft-light;opacity:.18}
+:root[data-theme="dark"] .photo-backdrop::after{background:repeating-linear-gradient(0deg,#d8c99b04 0,#d8c99b04 1px,transparent 1px,transparent 5px);opacity:.5}
+:root[data-theme="dark"] .app-shell:has(>.photo-backdrop) .site-footer{border-top-color:#a3ad8e1f}
+@media(max-width:760px){.photo-ambient{width:140vw;height:65vh}.photo-ambient-warm{right:-65%;top:12%}.photo-ambient-cool{left:-65%;bottom:-8%}.photo-paper-grain{opacity:.13}}
+@media(prefers-reduced-motion:reduce){.photo-ambient{transition:none}}

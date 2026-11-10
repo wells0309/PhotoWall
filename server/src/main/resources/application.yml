@@ -1,0 +1,24 @@
+server:
+  address: ${PHOTOWALL_BIND_ADDRESS:127.0.0.1}
+  port: ${PORT:8080}
+  forward-headers-strategy: framework
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        same-site: lax
+        secure: ${PHOTOWALL_SECURE_COOKIE:false}
+      timeout: 12h
+  compression:
+    enabled: true
+spring:
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 30MB
+photowall:
+  data-dir: ${PHOTOWALL_DATA_DIR:./data}
+  photo-quota-bytes: ${PHOTOWALL_PHOTO_QUOTA_BYTES:21474836480}
+  admin:
+    email: ${PHOTOWALL_ADMIN_EMAIL:}
+    password: ${PHOTOWALL_ADMIN_PASSWORD:}
